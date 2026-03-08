@@ -1,21 +1,102 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Happy International Woman's Day 💐</title>
-  <link rel="stylesheet" href="./style/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chúc mừng 8/3 💐</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+font-family:sans-serif;
+text-align:center;
+overflow:hidden;
+}
+
+h1{
+color:white;
+font-size:42px;
+}
+
+p{
+color:white;
+font-size:22px;
+}
+
+button{
+padding:10px 20px;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.heart{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+}
+}
+
+</style>
 </head>
+
 <body>
-  <h1>💐 Chúc mừng Ngày Quốc Tế Phụ nữ 💕</h1>
-  <p id="message">Chúc mẹ luôn khỏe mạnh và hạnh phúc 🌸</p>
 
-  <div id="soundToggle">🔇</div>
+<h1>💐 Chúc mừng Ngày Quốc Tế Phụ Nữ 💕</h1>
+<p>Chúc mẹ luôn khỏe mạnh và hạnh phúc 🌸</p>
 
-  <audio id="bgm" loop>
-    <source src="style/nhac.mp3" type="audio/mpeg" />
-  </audio>
+<button onclick="toggleMusic()">🔊 Bật / Tắt nhạc</button>
 
-  <script src="./style/script.js"></script>
+<audio id="music" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function toggleMusic(){
+let music=document.getElementById("music")
+if(music.paused){
+music.play()
+}else{
+music.pause()
+}
+}
+
+function createHeart(){
+
+let heart=document.createElement("div")
+
+heart.className="heart"
+heart.innerHTML="💗"
+
+heart.style.left=Math.random()*100+"vw"
+heart.style.animationDuration=(Math.random()*3+2)+"s"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{
+heart.remove()
+},5000)
+
+}
+
+setInterval(createHeart,300)
+
+</script>
+
 </body>
 </html>
